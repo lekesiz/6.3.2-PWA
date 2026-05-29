@@ -1,0 +1,312 @@
+/* ============================================================
+   Hôtel Belle Étoile — Reservation page
+   UE 6.3.2 PWA · Activité 1 · Mikail Lekesiz
+   HTML5 + CSS3 · Responsive (mobile-first)
+   ============================================================ */
+
+*, *::before, *::after { box-sizing: border-box; }
+* { margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+:root {
+    --color-primary: #1a4d7a;
+    --color-primary-dark: #133657;
+    --color-accent: #d4a64a;
+    --color-text: #1a1f2e;
+    --color-text-soft: #5a6378;
+    --color-bg: #f7f5f0;
+    --color-card: #ffffff;
+    --color-border: #e1ddd4;
+    --color-error: #c0392b;
+    --color-success: #2c7a4a;
+
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow-sm: 0 1px 3px rgba(20, 30, 50, 0.06);
+    --shadow-md: 0 10px 30px -10px rgba(20, 30, 50, 0.18);
+
+    --font-sans: 'Segoe UI', Roboto, -apple-system, BlinkMacSystemFont, 'Helvetica Neue', sans-serif;
+    --font-serif: Georgia, 'Times New Roman', serif;
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--color-text);
+    background-color: var(--color-bg);
+    line-height: 1.6;
+    min-height: 100vh;
+    -webkit-font-smoothing: antialiased;
+}
+
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 1rem;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px; height: 1px;
+    padding: 0; margin: -1px;
+    overflow: hidden;
+    clip: rect(0,0,0,0);
+    white-space: nowrap; border: 0;
+}
+
+.site-header {
+    background: var(--color-card);
+    border-bottom: 1px solid var(--color-border);
+    position: sticky; top: 0; z-index: 10;
+    box-shadow: var(--shadow-sm);
+}
+.header-inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-block: 1rem;
+}
+.logo {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    color: var(--color-primary);
+}
+.logo-mark {
+    color: var(--color-accent);
+    font-size: 1.6rem;
+    line-height: 1;
+}
+.logo-text {
+    font-family: var(--font-serif);
+    font-size: 1.3rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+.main-nav {
+    display: flex;
+    gap: 1.5rem;
+}
+.main-nav a {
+    color: var(--color-text);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 0.5rem 0.25rem;
+    border-bottom: 2px solid transparent;
+    transition: border-color 0.18s, color 0.18s;
+}
+.main-nav a:hover, .main-nav a:focus {
+    color: var(--color-primary);
+    border-color: var(--color-accent);
+    outline: none;
+}
+
+.hero { padding-block: 2.5rem 4rem; }
+.hero-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+@media (min-width: 900px) {
+    .hero-grid {
+        grid-template-columns: 1.05fr 1fr;
+        gap: 3rem;
+    }
+}
+
+.hero-media {
+    position: relative;
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow-md);
+    background: #ddd;
+}
+.hero-media img {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: cover;
+    aspect-ratio: 4/3;
+}
+@media (min-width: 900px) {
+    .hero-media img {
+        aspect-ratio: 3/4;
+        max-height: 720px;
+    }
+}
+.hero-caption {
+    position: absolute;
+    left: 0; right: 0; bottom: 0;
+    padding: 1rem 1.25rem;
+    background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0));
+    color: #fff;
+    font-size: 0.95rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+.badge { color: var(--color-accent); font-weight: 700; }
+
+.reservation-card {
+    background: var(--color-card);
+    border-radius: var(--radius);
+    padding: 2rem 1.5rem;
+    box-shadow: var(--shadow-md);
+}
+@media (min-width: 600px) {
+    .reservation-card { padding: 2.5rem 2rem; }
+}
+.reservation-card h1 {
+    font-family: var(--font-serif);
+    font-size: clamp(1.6rem, 4vw, 2.1rem);
+    color: var(--color-primary);
+    margin-bottom: 0.5rem;
+}
+.lead {
+    color: var(--color-text-soft);
+    margin-bottom: 1.75rem;
+    font-size: 0.95rem;
+}
+
+.reservation-form fieldset { border: 0; margin-bottom: 1.25rem; }
+.reservation-form .row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.75rem;
+}
+.field { display: flex; flex-direction: column; gap: 0.35rem; margin-bottom: 1rem; }
+.field label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-text);
+}
+.req { color: var(--color-error); }
+
+.field input[type="text"],
+.field input[type="number"],
+.field input[type="date"] {
+    width: 100%;
+    padding: 0.7rem 0.85rem;
+    font-size: 1rem;
+    font-family: inherit;
+    border: 1.5px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    background: #fafafa;
+    transition: border-color 0.15s, background 0.15s, box-shadow 0.15s;
+}
+.field input:focus {
+    outline: none;
+    border-color: var(--color-primary);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(26, 77, 122, 0.12);
+}
+.field input:invalid:not(:placeholder-shown) {
+    border-color: var(--color-error);
+}
+
+.options {
+    background: var(--color-bg);
+    border-radius: var(--radius-sm);
+    padding: 1rem 1rem 0.5rem 1rem;
+    border: 1px solid var(--color-border);
+}
+.options legend {
+    padding: 0 0.5rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--color-primary);
+}
+.radio {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.5rem;
+    padding: 0.5rem 0.25rem;
+    cursor: pointer;
+    font-size: 0.95rem;
+    line-height: 1.4;
+    border-radius: 6px;
+    transition: background 0.15s;
+}
+.radio:hover { background: rgba(0,0,0,0.03); }
+.radio input { accent-color: var(--color-primary); margin-top: 0.2rem; }
+
+.error {
+    display: block;
+    color: var(--color-error);
+    font-size: 0.85rem;
+    min-height: 1.2em;
+}
+
+.btn-primary,
+.btn-secondary {
+    width: 100%;
+    padding: 0.9rem 1rem;
+    font-size: 1rem;
+    font-weight: 600;
+    font-family: inherit;
+    border: 0;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: background 0.18s, transform 0.05s;
+}
+.btn-primary {
+    background: var(--color-primary);
+    color: #fff;
+    margin-top: 0.5rem;
+}
+.btn-primary:hover, .btn-primary:focus {
+    background: var(--color-primary-dark);
+    outline: none;
+}
+.btn-primary:active { transform: translateY(1px); }
+
+.btn-secondary {
+    background: transparent;
+    color: var(--color-primary);
+    border: 1.5px solid var(--color-primary);
+    margin-top: 1rem;
+}
+.btn-secondary:hover { background: var(--color-primary); color: #fff; }
+
+.secure-note {
+    text-align: center;
+    color: var(--color-text-soft);
+    font-size: 0.82rem;
+    margin-top: 1rem;
+}
+.lock { margin-right: 0.25rem; }
+
+.confirmation {
+    background: #e8f5ed;
+    border: 1px solid var(--color-success);
+    color: var(--color-success);
+    border-radius: var(--radius-sm);
+    padding: 1.5rem;
+    text-align: center;
+}
+.confirmation h2 {
+    font-family: var(--font-serif);
+    margin-bottom: 0.5rem;
+    color: var(--color-success);
+}
+
+.site-footer {
+    background: var(--color-primary-dark);
+    color: #c8cfd9;
+    padding: 2rem 0;
+    font-size: 0.85rem;
+    text-align: center;
+}
+.site-footer p { margin-bottom: 0.3rem; }
+.credit { color: var(--color-accent); }
+
+@media (max-width: 480px) {
+    .header-inner { flex-direction: column; gap: 0.75rem; }
+    .main-nav { gap: 1rem; flex-wrap: wrap; justify-content: center; }
+    .reservation-form .row { grid-template-columns: 1fr; }
+    .hero { padding-block: 1.5rem 2.5rem; }
+}

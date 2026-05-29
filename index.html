@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Hôtel Belle Étoile — Réservation en ligne sécurisée. Réservez votre séjour dans un cadre exceptionnel.">
+    <meta name="theme-color" content="#1a4d7a">
+    <title>Hôtel Belle Étoile — Réservation en ligne</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://images.unsplash.com">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="#" class="logo" aria-label="Hôtel Belle Étoile - Accueil">
+                <span class="logo-mark" aria-hidden="true">★</span>
+                <span class="logo-text">Hôtel Belle Étoile</span>
+            </a>
+            <nav class="main-nav" aria-label="Navigation principale">
+                <a href="#decouverte">Découverte</a>
+                <a href="#reservation">Réservation</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero" id="decouverte" aria-labelledby="hero-title">
+            <div class="container hero-grid">
+                <!-- Image de découverte de l'hôtel à gauche -->
+                <figure class="hero-media">
+                    <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=900&q=80&auto=format&fit=crop"
+                         alt="Vue extérieure de l'Hôtel Belle Étoile au coucher du soleil — façade illuminée et jardins paysagers"
+                         loading="eager"
+                         width="900"
+                         height="600">
+                    <figcaption class="hero-caption">
+                        <span class="badge">★★★★</span>
+                        Une expérience d'exception au cœur de la nature
+                    </figcaption>
+                </figure>
+
+                <!-- Formulaire de réservation à droite -->
+                <div class="reservation-card" id="reservation">
+                    <h1 id="hero-title">Réservez votre séjour</h1>
+                    <p class="lead">Confirmation immédiate · Annulation gratuite jusqu'à 48h avant</p>
+
+                    <form class="reservation-form" id="reservation-form" novalidate>
+                        <fieldset>
+                            <legend class="sr-only">Vos informations</legend>
+
+                            <div class="field">
+                                <label for="nom">Nom et prénom <span aria-hidden="true" class="req">*</span></label>
+                                <input type="text" id="nom" name="nom"
+                                       autocomplete="name"
+                                       placeholder="Ex. Mikail Lekesiz"
+                                       required
+                                       minlength="2"
+                                       aria-required="true">
+                                <small class="error" id="err-nom" role="alert"></small>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend class="sr-only">Voyageurs</legend>
+
+                            <div class="row">
+                                <div class="field">
+                                    <label for="adultes">Adultes <span aria-hidden="true" class="req">*</span></label>
+                                    <input type="number" id="adultes" name="adultes"
+                                           min="1" max="10" value="2" required aria-required="true">
+                                </div>
+                                <div class="field">
+                                    <label for="enfants">Enfants</label>
+                                    <input type="number" id="enfants" name="enfants"
+                                           min="0" max="10" value="0">
+                                </div>
+                            </div>
+                        </fieldset>
+
+                        <fieldset>
+                            <legend class="sr-only">Dates du séjour</legend>
+
+                            <div class="row">
+                                <div class="field">
+                                    <label for="arrivee">Date d'arrivée <span aria-hidden="true" class="req">*</span></label>
+                                    <input type="date" id="arrivee" name="arrivee" required aria-required="true">
+                                </div>
+                                <div class="field">
+                                    <label for="depart">Date de départ <span aria-hidden="true" class="req">*</span></label>
+                                    <input type="date" id="depart" name="depart" required aria-required="true">
+                                </div>
+                            </div>
+                            <small class="error" id="err-dates" role="alert"></small>
+                        </fieldset>
+
+                        <fieldset class="options">
+                            <legend>Options</legend>
+
+                            <label class="radio">
+                                <input type="radio" name="option" value="aucune" checked>
+                                <span>Aucune option</span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="option" value="repas">
+                                <span>Repas compris (petit-déjeuner, déjeuner, dîner)</span>
+                            </label>
+                            <label class="radio">
+                                <input type="radio" name="option" value="vehicule">
+                                <span>Service de location de véhicule</span>
+                            </label>
+                        </fieldset>
+
+                        <button type="submit" class="btn-primary">
+                            Soumettre la réservation
+                        </button>
+
+                        <p class="secure-note" aria-live="polite">
+                            <span class="lock" aria-hidden="true">🔒</span>
+                            Connexion sécurisée HTTPS · Vos données restent confidentielles
+                        </p>
+                    </form>
+
+                    <div class="confirmation" id="confirmation" hidden role="status" aria-live="polite">
+                        <h2>Merci pour votre réservation !</h2>
+                        <p id="confirm-text"></p>
+                        <button type="button" class="btn-secondary" id="new-reservation">Nouvelle réservation</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer" id="contact">
+        <div class="container footer-inner">
+            <p>© 2026 Hôtel Belle Étoile · 14 rue de la Plage, 67000 Strasbourg · +33 (0)3 88 00 00 00</p>
+            <p class="credit">UE 6.3.2 PWA — Activité 1 · Mikail Lekesiz, LP DWCA 2025/2026</p>
+        </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
