@@ -103,6 +103,37 @@ body {
     outline: none;
 }
 
+/* ---------- Header actions (Activité 3) ---------- */
+.header-actions {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+.btn-ghost {
+    background: transparent;
+    border: 1.5px solid var(--color-primary);
+    color: var(--color-primary);
+    padding: 0.45rem 0.9rem;
+    border-radius: var(--radius-sm);
+    font-size: 0.82rem;
+    font-weight: 600;
+    cursor: pointer;
+    font-family: inherit;
+    transition: background 0.15s, color 0.15s;
+}
+.btn-ghost:hover:not(:disabled) { background: var(--color-primary); color: #fff; }
+.btn-ghost:disabled { opacity: 0.55; cursor: not-allowed; }
+
+/* ---------- Status banner (online/offline) ---------- */
+.status-banner {
+    padding: 0.7rem 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+.status-banner.offline { background: #fff4d6; color: #8a6a00; border-bottom: 1px solid #e7c570; }
+.status-banner.online  { background: #e8f5ed; color: var(--color-success); }
+
 .hero { padding-block: 2.5rem 4rem; }
 .hero-grid {
     display: grid;

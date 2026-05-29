@@ -25,8 +25,13 @@
                 <a href="#consulter">Ma réservation</a>
                 <a href="#contact">Contact</a>
             </nav>
+            <div class="header-actions">
+                <button type="button" class="btn-ghost" id="notif-btn" hidden>🔔 Activer les notifications</button>
+                <button type="button" class="btn-ghost" id="install-btn" hidden>⤓ Installer l'app</button>
+            </div>
         </div>
     </header>
+    <div class="status-banner" id="status-banner" role="status" aria-live="polite" hidden></div>
 
     <main>
         <section class="hero" id="decouverte" aria-labelledby="hero-title">
@@ -113,7 +118,7 @@
 
                         <p class="secure-note" aria-live="polite">
                             <span class="lock" aria-hidden="true">🔒</span>
-                            Connexion sécurisée HTTPS · PWA installable
+                            HTTPS · Service Worker actif · Background Sync
                         </p>
                     </form>
 
@@ -164,7 +169,7 @@
     <footer class="site-footer" id="contact">
         <div class="container footer-inner">
             <p>© 2026 Hôtel Belle Étoile · 14 rue de la Plage, 67000 Strasbourg · +33 (0)3 88 00 00 00</p>
-            <p class="credit">UE 6.3.2 PWA — Activité 2 (Service Worker + DB) · Mikail Lekesiz, LP DWCA 2025/2026</p>
+            <p class="credit">UE 6.3.2 PWA — Activité 3 (Cache + Notifications + Background Sync) · Mikail Lekesiz, LP DWCA 2025/2026</p>
         </div>
     </footer>
 
